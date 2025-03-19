@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Protection Initiatives</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #c3eeec;
+            color: #3b3a3a;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2a7f62;
+            color: white;
+            padding: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 22px;
+            margin: 0;
+            animation: slideInFromRight 1.0s ease-in-out;
+            flex: 1;
+            text-align: center;
+        }
+
+        header img {
+            width: 70px;
+            height: 70px;
+            border: 2px solid yellow;
+            border-radius: 50%;
+            object-fit: cover; /* Ensure logo image scales properly */
+        }
+
+        /* Navigation Styles */
+        .nav1 {
+            padding: 5px;
+            text-align: center;
+            background-color: rgb(210, 168, 30);
+        }
+
+        .nav1 ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav1 ul li {
+            display: inline-block;
+            margin: 4px;
+            padding: 4px;
+        }
+
+        .nav1 ul li a {
+            color: #333333;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 3px 5px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .nav1 ul li a:hover {
+            background-color: #679c43;
+            color: #f4f4f9;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 3;
+            top: 0;
+            right: 0;
+            background-color: #076407;
+            overflow-x: hidden;
+            transition: 0.4s ease;
+            padding-top: 40px;
+        }
+
+        .sidebar a {
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 17px;
+            color: #fff;
+            display: block;
+            transition: background-color 0.2s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar a:hover {
+            background-color: rgb(212, 112, 18);
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            font-size: 26px;
+            border-bottom: none;
+        }
+
+        /* Main Content Styles */
+        #main {
+            transition: margin-right .4s ease;
+            padding: 8px;
+        }
+
+        section {
+            padding: 12px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 20px;
+            color: #2a7f62;
+            margin-bottom: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        section p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* Card Styles */
+        .card {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto; 
+            max-height: 300px; 
+            object-fit: contain; 
+            border-radius: 4px;
+            display: block; 
+            margin: 8px auto; 
+        }
+
+        /* Menu Button Styles */
+        .menu-button {
+            display: none;
+            font-size: 22px;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 6px 0;
+        }
+
+        footer p {
+            font-size: 11px;
+            color: #f4f4f9;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInFromRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            60% { transform: translateY(-1px); }
+        }
+
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+
+        /* Mobile Responsive Design - Focus on Images */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 6px;
+                flex-direction: column;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                z-index: 2;
+            }
+
+            header h1 {
+                font-size: 16px;
+                text-align: center;
+                width: 100%;
+                padding: 0 40px;
+            }
+
+            header img {
+                width: 45px;
+                height: 45px;
+                margin: 6px 0;
+            }
+
+            .menu-button {
+                display: block;
+                position: absolute;
+                top: 6px;
+                right: 6px;
+            }
+
+            .nav1 {
+                display: none;
+            }
+
+            .sidebar {
+                width: 0;
+                max-width: 280px;
+            }
+
+            .sidebar a {
+                font-size: 15px;
+                padding: 10px 12px;
+            }
+
+            .sidebar .closebtn {
+                font-size: 22px;
+            }
+
+            #main {
+                padding: 4px;
+            }
+
+            section {
+                padding: 8px;
+            }
+
+            section h2 {
+                font-size: 15px;
+                margin-bottom: 8px;
+            }
+
+            section p {
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+
+            .card {
+                padding: 8px;
+                margin: 6px 0;
+            }
+
+            .card img {
+                max-height: 200px; /* Adjusted for tablets */
+                object-fit: contain;
+            }
+
+            footer {
+                padding: 5px 0;
+            }
+
+            footer p {
+                font-size: 9px;
+            }
+
+            .bounce, section h2 {
+                animation: none;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 14px;
+                padding: 0 35px;
+            }
+
+            header img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .menu-button {
+                font-size: 18px;
+                padding: 2px 6px;
+            }
+
+            .sidebar {
+                max-width: 240px;
+            }
+
+            .sidebar a {
+                font-size: 13px;
+                padding: 8px 10px;
+            }
+
+            .sidebar .closebtn {
+                font-size: 20px;
+            }
+
+            section h2 {
+                font-size: 13px;
+            }
+
+            section p {
+                font-size: 11px;
+            }
+
+            .card {
+                padding: 6px;
+            }
+
+            .card img {
+                max-height: 160px; /* Adjusted for mid-range phones */
+                object-fit: contain;
+            }
+
+            footer p {
+                font-size: 8px;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            header h1 {
+                font-size: 12px;
+                padding: 0 30px;
+            }
+
+            header img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .menu-button {
+                font-size: 16px;
+            }
+
+            .sidebar a {
+                font-size: 12px;
+                padding: 6px 8px;
+            }
+
+            section h2 {
+                font-size: 12px;
+            }
+
+            section p {
+                font-size: 10px;
+            }
+
+            .card {
+                padding: 5px;
+            }
+
+            .card img {
+                max-height: 120px; /* Adjusted for small phones */
+                object-fit: contain;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top"></div>
+
+    <!-- Sidebar -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="index.html">Home</a>
+        <a href="Climate.html">Climate Change</a>
+        <a href="Tourism.html">Community Tourism</a>
+        <a href="activities.html">Recreation Activities</a>
+        <a href="Training and skilling.html">Training and Skilling</a>
+        <a href="About.html">About Us</a>
+        <a href="Contact.html">Contact Us</a>
+        <a href="Child protection.html">Child Protection</a>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main">
+        <header>
+            <h1>RWENZORI COMMUNITY CONSERVATION AND REHABILITATION-RCCR</h1>
+            <img src="files/Logo_3.jpg" class="bounce" alt="Logo">
+            <button class="menu-button" id="menu-toggle" onclick="openNav()">☰</button>
+        </header>
+
+        <main>
+            <section>
+                <!-- Navigation -->
+                <div class="nav1">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Climate.html">Climate Change Solutions</a></li>
+                        <li><a href="Tourism.html">Community Tourism</a></li>
+                        <li><a href="activities.html">Recreation Activities</a></li>
+                        <li><a href="Training and skilling.html">Training and Skilling</a></li>
+                        <li><a href="About.html">About Us</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Child Protection Content -->
+                <div class="card">
+                    <h2>CHILD PROTECTION INITIATIVES</h2>
+                    <p>At RCCR, we are deeply committed to the safety, well-being, and holistic development of every child. Our child protection initiatives are a cornerstone of our mission to create a nurturing and secure environment where children can thrive, free from harm and fear.</p>
+                    <p>We believe that safeguarding children is not just a responsibility, it is a moral imperative. Our efforts are guided by international child protection standards, national laws, and a commitment to uphold the rights of every child through education, community outreach, and robust policies.</p>
+                    <p>We invite you to join us in this vital mission.</p>
+                    <h3>Explore our website to learn more about our programs, partnerships, and how you can contribute to creating a safer world for children.</h3>
+
+                    <h2>Our Programs</h2>
+                    <p>We work across various programs and initiatives to protect children from all forms of harm. Here are some of the key areas we focus on:</p>
+                    <br>
+
+                    <h3>1. Child Abuse Prevention</h3>
+                    <p>Child abuse takes many forms—physical, emotional, sexual, and neglect. Through our Child Abuse Prevention Program, we educate parents, teachers, and community members about the signs of abuse and the resources available to protect children.</p>
+                    <br>
+
+                    <h3>2. Support for At-Risk Children</h3>
+                    <p>Our At-Risk Children Support Program focuses on identifying children who are most vulnerable to abuse, neglect, or exploitation, including those in foster care, homeless children, and children in conflict zones.</p>
+                    <br>
+
+                    <h3>3. Child Labor and Exploitation Prevention</h3>
+                    <p>Every child has the right to a childhood free of labor and exploitation. We are dedicated to ending child labor through education, advocacy, and partnerships with global organizations to eliminate exploitative practices.</p>
+                    <br>
+
+                    <h3>4. Emergency Response and Disaster Relief for Children</h3>
+                    <p>Natural disasters, conflict, and crises often leave children especially vulnerable. Our Emergency Response Program ensures that children in disaster-stricken areas receive immediate protection, care, and access to healthcare.</p>
+                    <br>
+                    <img src="files/desaster.jpg" alt="Disaster">
+                </div>
+
+                <!-- Contact Information -->
+                <address>
+                    <p>If you have any questions or would like to learn more about how you can get involved in environmental conservation, feel free to reach out to us:</p>
+                    <p>Email: <a href="mailto:rwenzoricommunityconservation@gmail.com">rwenzoricommunityconservation@gmail.com</a></p>
+                    <p>Phone: +256 0777964063</p>
+                </address>
+
+                <a href="#top">Back to Top</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 Environmental Conservation & Climate Change Solutions. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "85%";
+            document.getElementById("main").style.marginRight = "0";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginRight = "0";
+            document.body.style.overflow = "auto";
+        }
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById("mySidebar");
+            const menuButton = document.getElementById("menu-toggle");
+            if (sidebar.style.width === "85%" && !sidebar.contains(event.target) && !menuButton.contains(event.target)) {
+                closeNav();
+            }
+        });
+    </script>
+</body>
+</html>

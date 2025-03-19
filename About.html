@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Us - Rwenzori Community Conservation and Rehabilitation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2c5e2e;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            border: 3px solid yellow;
+            border-radius: 50%;
+            float: right;
+            clear: both;
+            margin-top: 0px;
+        }
+
+        /* Hamburger Menu Button */
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: #119fe0;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #2c5e2e;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.5rem;
+            margin-left: 50px;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Navigation Styles */
+        .nav1 {
+            background-color: #3d7e3f;
+            padding: 1rem;
+        }
+
+        .nav1 ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .nav1 ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .nav1 ul li a:hover {
+            background-color: #2c5e2e;
+            border-radius: 5px;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Section Styles */
+        section {
+            margin: 2rem 0;
+        }
+
+        h2 {
+            color: #2c5e2e;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h3 {
+            color: #3d7e3f;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* Program Grid */
+        #programs .program {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        #programs .program:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Why Choose Us List */
+        #why-choose-us ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #why-choose-us li {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #why-choose-us strong {
+            color: #2c5e2e;
+        }
+
+        /* Address Styles */
+        address {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        address h3 {
+            margin-bottom: 1rem;
+        }
+
+        address a {
+            color: #2c5e2e;
+            text-decoration: none;
+        }
+
+        address a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-top {
+            display: block;
+            text-align: center;
+            color: #2c5e2e;
+            padding: 1rem;
+            text-decoration: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: green;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav1 {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .overlay.active {
+                display: block;
+            }
+
+            .nav1 ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            .program, #why-choose-us li {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="mobileSidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">×</a>
+        <a href="index.html">Home</a>
+        <a href="climate.html">Climate Change Solutions</a>
+        <a href="Child protection.html">Child Protection</a>
+        <a href="Tourism.html">Community Tourism</a>
+        <a href="activities.html">Recreation Activities</a>
+        <a href="Training and skilling.html">Training & Skilling</a>
+        <a href="Contact.html">Contact Us</a>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <div id="top"></div>
+    <header>
+        <h1>Rwenzori Community Conservation and Rehabilitation (RCCR)</h1>
+        <img src="files/Logo_3.jpg" alt="RCCR Logo">
+        <button class="menu-btn" onclick="openSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <nav class="nav1">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="climate.html">Climate Change Solutions</a></li>
+            <li><a href="Child protection.html">Child Protection</a></li>
+            <li><a href="Tourism.html">Community Tourism</a></li>
+            <li><a href="activities.html">Recreation Activities</a></li>
+            <li><a href="Training and skilling.html">Training & Skilling</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Welcome to the Rwenzori Community Conservation and Rehabilitation (RCCR), a dedicated organization committed to empowering local communities and preserving the natural environment. Our mission is to ensure a sustainable future for both the people and the unique biodiversity of the Rwenzori region, located at the heart of East Africa.</p>
+            <h3>Our Vision</h3>
+            <p>To build resilient communities that thrive alongside nature, where conservation and sustainable development go hand in hand, benefiting both the environment and the people who depend on it.</p>
+            <h3>Our Mission</h3>
+            <p>We are committed to the sustainable conservation and rehabilitation of the Rwenzori Mountains and its surrounding ecosystems by promoting community involvement in environmental protection, climate change mitigation, child welfare, and eco-friendly tourism.</p>
+        </div>
+    </section>
+
+    <section id="programs">
+        <div class="container">
+            <h2>Our Core Programs</h2>
+            <div class="program">
+                <h3>Community Tourism</h3>
+                <p>We offer unique cultural experiences, guided treks, and eco-tours, allowing visitors to connect with nature while contributing to the livelihood of local communities through responsible tourism.</p>
+            </div>
+            <div class="program">
+                <h3>Child Protection</h3>
+                <p>We provide educational programs, vocational training, and awareness campaigns to protect children from abuse, neglect, and exploitation, building safe environments for them to thrive.</p>
+            </div>
+            <div class="program">
+                <h3>Climate Change Solutions</h3>
+                <p>We implement sustainable practices like reforestation and renewable energy promotion, engaging communities to adapt to climate challenges and ensure a resilient future.</p>
+            </div>
+            <div class="program">
+                <h3>Recreation Activities</h3>
+                <p>We organize activities like hiking, bird watching, and sports to foster social bonding, promote health, and encourage environmental stewardship among residents.</p>
+            </div>
+            <div class="program">
+                <h3>Environmental Rehabilitation</h3>
+                <p>Our projects restore natural habitats, rehabilitate degraded land, and conserve water resources through education and community collaboration.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose-us">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li><strong>Community-Driven Approach:</strong> We prioritize local involvement, ensuring communities benefit directly and have ownership of our efforts.</li>
+                <li><strong>Sustainable Practices:</strong> Our programs are designed for long-term environmental and community benefits.</li>
+                <li><strong>Holistic Development:</strong> We address interconnected challenges of climate, child protection, and sustainable development.</li>
+                <li><strong>Partnerships:</strong> We collaborate with governments, NGOs, and private sectors for maximum impact.</li>
+            </ul>
+            <address>
+                <h3>For More Information</h3>
+                <p>Email: <a href="mailto:rwenzoricommunityconservation@gmail.com">rwenzoricommunityconservation@gmail.com</a></p>
+                <p>Phone: +256 0777964063</p>
+            </address>
+            <a href="#top" class="back-to-top">Back to Top</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright © 2025 - RCCR</p>
+        <p>All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function openSidebar() {
+            document.getElementById("mobileSidebar").classList.add("active");
+            document.getElementById("overlay").classList.add("active");
+        }
+
+        function closeSidebar() {
+            document.getElementById("mobileSidebar").classList.remove("active");
+            document.getElementById("overlay").classList.remove("active");
+        }
+    </script>
+</body>
+</html>

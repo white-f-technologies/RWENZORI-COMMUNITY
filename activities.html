@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recreation Activities - RCCR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #11975f;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin: 0.5rem 0;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            border: 3px solid yellow;
+            border-radius: 50%;
+            align-content: center;
+            clear: both;
+        }
+
+        /* Menu Button Styles */
+        .menu-btn {
+            font-size: 1.5rem;
+            color: white;
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            cursor: pointer;
+            z-index: 101;
+            display: none;
+        }
+
+        /* Navigation Styles */
+        .nav1.desktop-nav {
+            background-color: #0b71a0;
+            padding: 1rem;
+        }
+
+        .nav1 ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .nav1 ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .nav1 ul li a:hover {
+            background-color: #2c3e50;
+            border-radius: 5px;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            background-color: #0b71a0;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+        .sidebar .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            color: white;
+        }
+
+        .sidebar .close-btn {
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #2c3e50;
+        }
+
+        /* Show sidebar when active */
+        .sidebar.active {
+            width: 250px;
+        }
+
+        /* Activities Section */
+        .activities {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-card h2 {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            background: #34495e;
+        }
+
+        .activity-card img,
+        .activity-card video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .activity-card p {
+            padding: 1rem;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Address Section */
+        address {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #ffffff;
+            margin: 2rem 1rem;
+            border-radius: 10px;
+        }
+
+        address h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        address a {
+            color: #34495e;
+            text-decoration: none;
+        }
+
+        address a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-top {
+            display: block;
+            text-align: center;
+            color: #34495e;
+            padding: 1rem;
+            text-decoration: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            header {
+                padding-bottom: 3rem;
+            }
+
+            .activities {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .activity-card {
+                margin: 0 0.5rem;
+            }
+
+            address {
+                margin: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            
+            <span class="close-btn">×</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="climate.html">Climate Change Solutions</a></li>
+            <li><a href="Child protection.html">Child Protection</a></li>
+            <li><a href="Tourism.html">Community Tourism</a></li>
+            <li><a href="Training and skilling.html">Training & Skilling</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div id="top"></div>
+    <header>
+        <h1>Recreation Activities</h1>
+        <p>Discover fun activities to rejuvenate your body and mind!</p>
+        <img src="files/Logo_3.jpg" alt="RCCR Logo">
+        <!-- Hamburger Menu Button -->
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <nav class="nav1 desktop-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="climate.html">Climate Change Solutions</a></li>
+            <li><a href="Child protection.html">Child Protection</a></li>
+            <li><a href="Tourism.html">Community Tourism</a></li>
+            <li><a href="Training and skilling.html">Training & Skilling</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section class="activities">
+        <div class="activity-card">
+            <h2>Football</h2>
+            <img src="files/KTC CLUB.jpg" alt="Football team">
+            <video src="files/KTC match2.mp4" controls></video>
+            <p>Join us and have fun together!</p>
+        </div>
+
+        <div class="activity-card">
+            <h2>Netball & Basketball</h2>
+            <img src="files/EQUIPMENTS.jpg" alt="Sports equipment">
+            <p>Your fitness is our pride.</p>
+        </div>
+
+        <div class="activity-card">
+            <h2>Music, Dance & Drama</h2>
+            <video src="files/DANCE.mp4" controls></video>
+            <p>Experience the rhythm of our community!</p>
+        </div>
+    </section>
+
+    <address>
+        <h3>For More Information</h3>
+        <p>Email: <a href="mailto:rwenzoricommunityconservation@gmail.com">rwenzoricommunityconservation@gmail.com</a></p>
+        <p>Phone: +256 0777964063</p>
+        <a href="#top" class="back-to-top">Back to Top</a>
+    </address>
+
+    <footer>
+        <p>Copyright © 2025 - RCCR</p>
+        <p>All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Sidebar toggle functionality
+        const menuBtn = document.querySelector('.menu-btn');
+        const sidebar = document.querySelector('.sidebar');
+        const closeBtn = document.querySelector('.close-btn');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+
+        // Close sidebar when clicking a link
+        const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

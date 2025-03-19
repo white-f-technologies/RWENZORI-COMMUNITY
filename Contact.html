@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Rwenzori Community Conservation and Rehabilitation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #aaaaaa;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping for mobile */
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        header img {
+            max-height: 60px;
+            width: auto;
+            border-radius: 50%; /* Round logo */
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-left: auto; /* Push to right */
+        }
+
+        /* Sidebar (Right Side) */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #1f44aa;
+            overflow-x: hidden;
+            transition: 0.3s;
+            z-index: 1;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 20px;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Main Navigation (Desktop) */
+        .nav1 {
+            background-color: #0f5830;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .nav1 ul {
+            list-style-type: none;
+        }
+
+        .nav1 ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        .nav1 ul li a {
+            color: rgb(214, 192, 192);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .nav1 ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .contact-section {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgb(224, 168, 168);
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-section h3 {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .contact-section address, .contact-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            margin-top: 30px;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #2ecc71;
+        }
+
+        footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #f4f4f9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                margin-top: 10px; /* Space below logo */
+            }
+
+            .nav1 {
+                display: none; /* Hide horizontal nav on mobile */
+            }
+
+            header .container {
+                flex-direction: column; /* Stack items vertically */
+                align-items: center;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            header img {
+                max-height: 50px;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .contact-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-section h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            header img {
+                max-height: 40px;
+            }
+
+            .contact-section {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .contact-section p, .contact-section address {
+                font-size: 0.9rem;
+            }
+
+            .contact-form input, .contact-form textarea, .contact-form button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Rwenzori Community Conservation and Rehabilitation</h1>
+            <img src="files/Logo_3.jpg" alt="RCCR Logo">
+            <button class="hamburger" onclick="toggleSidebar()">☰</button>
+        </div>
+    </header>
+
+    <!-- Sidebar for Mobile (Right Side) -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="climate.html">Climate Change Solutions</a></li>
+            <li><a href="Child protection.html">Child Protection Activities</a></li>
+            <li><a href="Tourism.html">Community Tourism</a></li>
+            <li><a href="activities.html">Recreation Activities</a></li>
+            <li><a href="Training and skilling.html">Training and Skilling</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="https://www.google.com" target="_blank">Go to Google</a></li>
+        </ul>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <div class="nav1">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="climate.html">Climate Change Solutions</a></li>
+            <li><a href="Child protection.html">Child Protection Activities</a></li>
+            <li><a href="Tourism.html">Community Tourism</a></li>
+            <li><a href="activities.html">Recreation Activities</a></li>
+            <li><a href="Training and skilling.html">Training and Skilling</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="https://www.google.com" target="_blank">Go to Google</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Thank you for your interest in the Rwenzori Community Conservation and Rehabilitation initiative. We are dedicated to preserving the natural beauty and biodiversity of the Rwenzori Mountains, while empowering local communities to participate in conservation efforts.</p>
+
+                <h3>Office Location</h3>
+                <address>
+                    Rwenzori Community Conservation and Rehabilitation<br>
+                    P.O. Box 123, Kyarumba<br>
+                    Kasese, Uganda
+                </address>
+
+                <h3>Phone</h3>
+                <p>+256 777964063</p>
+                <p>+256 782793152</p>
+
+                <h3>Email</h3>
+                <p>Email: <a href="mailto:rwenzoricommunityconservation@gmail.com">rwenzoricommunityconservation@gmail.com</a></p>
+
+                <h3>Send Us a Message</h3>
+                <form action="https://formspree.io/f/mjkyvanr" method="POST" class="contact-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject">
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            <p><a href="#top">Back to Top</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright © 2025 - RCCR</p>
+        <p>All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

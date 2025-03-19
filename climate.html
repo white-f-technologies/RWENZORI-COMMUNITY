@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change - RCCR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2c5e2e;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            display: flex; /* Added for layout control */
+            align-items: center; /* Vertically center items */
+            justify-content: space-between; /* Space out elements */
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            border: 3px solid yellow;
+            border-radius: 50%;
+            float: right;
+            clear: both;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .nav1 {
+            background-color: #3d7e3f;
+            padding: 1rem;
+        }
+
+        .nav1 ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background-color: rgb(255, 153, 0);
+        }
+
+        .nav1 ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .nav1 ul li a:hover {
+            background-color: #2c4a5e;
+            border-radius: 5px;
+        }
+
+        .nav1 h2 {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h2 {
+            color: #2c5e2e;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #3d7e3f;
+            margin: 1rem 0;
+        }
+
+        .card h4 {
+            color: #4a9650;
+            margin-bottom: 0.5rem;
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 445px;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        address {
+            text-align: center;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        address a {
+            color: #2c5e2e;
+        }
+
+        .back-to-top {
+            display: block;
+            text-align: center;
+            margin: 1rem 0;
+            color: #2c5e2e;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #2c5e2e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .nav1 ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #3d7e3f;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar .sidebar-header {
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #2c4a5e;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .close-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-btn {
+            font-size: 24px;
+            background: #2c5e2e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            order: -1; /* Moves the button to the left */
+        }
+
+        .menu-btn:hover {
+            background-color: #3d7e3f;
+        }
+
+        @media (min-width: 769px) {
+            .menu-btn {
+                display: none; /* Hide menu button on big screens */
+            }
+            .sidebar {
+                display: none; /* Hide sidebar on big screens */
+            }
+            .nav1 {
+                display: block; /* Ensure nav1 is visible on big screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: inline-block; /* Show menu button on mobile */
+            }
+            .nav1 {
+                display: none; /* Hide the original nav on mobile */
+            }
+            .sidebar.active {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <button class="close-btn">✖</button>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Child protection.html">Child Protection</a></li>
+            <li><a href="Tourism.html">Community Tourism</a></li>
+            <li><a href="activities.html">Recreation</a></li>
+            <li><a href="Training and skilling.html">Training & Skilling</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div id="top"></div>
+    <header>
+        <button class="menu-btn">☰</button> <!-- Moved to the left -->
+        <h1>Rwenzori Community Conservation and Rehabilitation (RCCR)</h1>
+        <img src="files/Logo_3.jpg" class="bounce" alt="RCCR Logo">
+    </header>
+
+    <main>
+        <section>
+            <nav class="nav1">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Child protection.html">Child Protection</a></li>
+                    <li><a href="Tourism.html">Community Tourism</a></li>
+                    <li><a href="activities.html">Recreation</a></li>
+                    <li><a href="Training and skilling.html">Training & Skilling</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                </ul>
+                <h2>Climate Change</h2>
+            </nav>
+
+            <div class="card">
+                <h2>Climate Change Solutions</h2>
+                <p>There are many solutions we can implement to mitigate the effects of climate change and protect our planet. Here are some key approaches:</p>
+                
+                <h3>1. Renewable Energy</h3>
+                <p>Switching to renewable energy sources such as solar, wind, and hydroelectric power can reduce our reliance on fossil fuels, lower carbon emissions, and promote sustainability.</p>
+                <img src="files/conservation.png" alt="Solar and wind energy">
+            </div>
+
+            <div class="card">
+                <h3>2. Energy Efficiency</h3>
+                <p>Improving energy efficiency in buildings, transportation, and industry can significantly cut down on energy consumption and reduce greenhouse gas emissions.</p>
+                <img src="files/solar-power-plant-.jpg" alt="Solar power plant">
+            </div>
+
+            <div class="card">
+                <h3>3. Reforestation</h3>
+                <p>Planting trees and restoring forests is one of the most effective ways to absorb carbon dioxide and maintain biodiversity. Forests also provide important ecosystem services like water regulation and soil protection.</p>
+                <img src="files/afforestation.jpg" alt="Tree planting">
+            </div>
+
+            <div class="card">
+                <h3>4. Sustainable Agriculture</h3>
+                <h4>Promoting Sustainable Agriculture for Resilient Communities</h4>
+                <p>Our CBO is committed to fostering sustainable agricultural practices that protect the environment, enhance soil health, and improve livelihoods. We work with local farmers to adopt eco-friendly techniques such as organic farming, crop rotation, agroforestry, and water conservation. By empowering communities with knowledge and resources, we aim to ensure food security, mitigate climate change impacts, and build a thriving future for generations to come.</p>
+                <img src="files/crop growing.jpg" alt="Sustainable crop farming">
+            </div>
+
+            <address>
+                <p>If you have any questions or would like to learn more about how you can get involved in environmental conservation, feel free to reach out to us:</p>
+                <p>Email: <a href="mailto:rwenzoricommunityconservation@gmail.com">rwenzoricommunityconservation@gmail.com</a></p>
+                <p>Phone: +256 0777964063</p>
+            </address>
+
+            <a href="#top" class="back-to-top">Back to Top</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright © 2025 - RCCR</p>
+        <p>All Rights Reserved</p>
+    </footer>
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.add('active');
+        });
+        
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('active');
+        });
+    </script>
+</body>
+</html>
